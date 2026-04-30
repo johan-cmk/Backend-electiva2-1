@@ -9,23 +9,23 @@ require("dotenv").config();
 
 const app = express();
 
-// middlewares
+
 app.use(cors({
   origin: "http://localhost:5173"
 }));
 app.use(express.json());
 
-// agrega esta línea junto a las demás rutas
+
 app.use("/api", productosRoutes);
 
-/// pedidos
+
 app.use("/api", pedidosRoutes);
 
-// rutas de la API
+
 app.use("/api", usuarioRoutes);
 app.use("/api/auth", authRoutes);
 
-// conexión a MongoDB
+
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log("MongoDB conectado 🚀");
@@ -34,7 +34,7 @@ mongoose.connect(process.env.MONGO_URI)
     console.log("Error de conexión:", error);
 });
 
-// ruta de prueba
+
 app.get("/", (req, res) => {
     res.send("API funcionando 🚀");
 });
