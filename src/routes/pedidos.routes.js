@@ -3,7 +3,7 @@ const router = express.Router();
 const Pedido = require("../models/Pedido");
 const { verificarToken, soloAdmin } = require("../middleware/verificarToken");
 
-// usuario — crear pedido
+
 router.post("/pedidos", verificarToken, async (req, res) => {
     try {
         const { items, total } = req.body;
@@ -23,7 +23,7 @@ router.post("/pedidos", verificarToken, async (req, res) => {
     }
 });
 
-// admin — ver todos los pedidos
+
 router.get("/pedidos", verificarToken, soloAdmin, async (req, res) => {
     try {
         const pedidos = await Pedido.find().sort({ createdAt: -1 });
@@ -33,7 +33,7 @@ router.get("/pedidos", verificarToken, soloAdmin, async (req, res) => {
     }
 });
 
-// admin — cambiar estado del pedido
+
 router.put("/pedidos/:id", verificarToken, soloAdmin, async (req, res) => {
     try {
         const pedido = await Pedido.findByIdAndUpdate(req.params.id, { estado: req.body.estado }, { new: true });

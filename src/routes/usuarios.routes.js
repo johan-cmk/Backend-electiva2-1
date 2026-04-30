@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Usuario = require("../models/Usuario");
 
-// crear usuario
+
 router.post("/usuarios", async (req, res) => {
     try {
         const nuevoUsuario = new Usuario(req.body);
@@ -15,7 +15,7 @@ router.post("/usuarios", async (req, res) => {
     }
 });
 
-// obtener usuarios
+
 router.get("/usuarios", async (req, res) => {
     try {
         const usuarios = await Usuario.find();
@@ -25,7 +25,7 @@ router.get("/usuarios", async (req, res) => {
     }
 });
 
-// actualizar usuario
+
 router.put("/usuarios/:id", async (req, res) => {
     try {
         const usuarioActualizado = await Usuario.findByIdAndUpdate(
@@ -40,7 +40,7 @@ router.put("/usuarios/:id", async (req, res) => {
     }
 });
 
-// eliminar usuario
+
 router.delete("/usuarios/:id", async (req, res) => {
     try {
         await Usuario.findByIdAndDelete(req.params.id);

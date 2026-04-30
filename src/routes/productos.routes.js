@@ -3,7 +3,7 @@ const router = express.Router();
 const Producto = require("../models/Producto");
 const { verificarToken, soloAdmin } = require("../middleware/verificarToken");
 
-// público — ver productos
+
 router.get("/productos", async (req, res) => {
     try {
         const productos = await Producto.find({ disponible: true });
@@ -13,7 +13,7 @@ router.get("/productos", async (req, res) => {
     }
 });
 
-// admin — crear producto
+
 router.post("/productos", verificarToken, soloAdmin, async (req, res) => {
     try {
         const producto = new Producto(req.body);
@@ -24,7 +24,7 @@ router.post("/productos", verificarToken, soloAdmin, async (req, res) => {
     }
 });
 
-// admin — editar producto
+
 router.put("/productos/:id", verificarToken, soloAdmin, async (req, res) => {
     try {
         const producto = await Producto.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -34,7 +34,7 @@ router.put("/productos/:id", verificarToken, soloAdmin, async (req, res) => {
     }
 });
 
-// admin — eliminar producto
+
 router.delete("/productos/:id", verificarToken, soloAdmin, async (req, res) => {
     try {
         await Producto.findByIdAndDelete(req.params.id);
