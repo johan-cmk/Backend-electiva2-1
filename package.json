@@ -2,9 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "servidor.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "start": "node servidor.js",
+    "dev": "nodemon servidor.js"
   },
   "keywords": [],
   "author": "",
