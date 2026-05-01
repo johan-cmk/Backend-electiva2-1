@@ -10,7 +10,7 @@ require("dotenv").config();
 const app = express();
 
 app.use(cors({
-  origin: "https://frontend-electiva2-1.vercel.app"
+  origin: "*"
 }));
 
 app.use(express.json());
